@@ -8,11 +8,11 @@ cloudinary.config({
 });
 
 export async function getImages() {
-    const result = await cloudinary.search
-      .expression('folder:"Unfinished Symphony"')
-      .sort_by('created_at', 'desc') // Keep original sorting in the API call
-      .max_results(100)
-      .execute();
+  const result = await cloudinary.search
+    .expression('folder:"Unfinished Symphony"')
+    .sort_by('public_id', 'asc')  // Changed from 'created_at', 'desc'
+    .max_results(100)
+    .execute();
       
     // Sort the resources alphabetically by public_id
     const sortedResources = [...result.resources].sort((a, b) => {
