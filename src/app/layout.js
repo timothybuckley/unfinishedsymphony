@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
       <body className="bg-gray-100 min-h-screen">
         <header className="bg-white shadow-md py-4">
           <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold text-blue-600">Cloudinary Gallery</h1>
+            <h1 className="text-2xl font-bold text-blue-600">Image Gallery</h1>
           </div>
         </header>
         {children}
