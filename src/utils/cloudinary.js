@@ -10,7 +10,7 @@ cloudinary.config({
 export async function getImages() {
     const result = await cloudinary.search
       .expression('folder:"Unfinished Symphony"')
-      .sort_by('created_at', 'desc')
+      .sort_by('public_id', 'asc') // Changed to sort by public_id in ascending order
       .max_results(100)
       .execute();
       
