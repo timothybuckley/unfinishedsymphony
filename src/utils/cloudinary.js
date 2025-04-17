@@ -10,11 +10,20 @@ cloudinary.config({
 export async function getImages() {
     const result = await cloudinary.search
       .expression('folder:"Unfinished Symphony"')
-      .sort_by('public_id', 'asc') // Changed to sort by public_id in ascending order
+      .sort_by('created_at', 'desc') // Keep original sorting in the API call
       .max_results(100)
       .execute();
       
-    return result.resources;
+    // Sort the resources alphabetically by public_id
+    const sortedResources = [...result.resources].sort((a, b) => {
+      // Extract the filename part from the public_id (after the last slash)
+      const filenameA = a.public_id.split('/').pop().toLowerCase();
+      const filenameB = b.public_id.split('/').pop().toLowerCase();
+      
+      return filenameA.localeCompare(filenameB);
+    });
+      
+    return sortedResources;
   }
 
 export default cloudinary;
