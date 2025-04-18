@@ -16,11 +16,11 @@ export async function getImages() {
       
     // Sort the resources alphabetically by public_id
     const sortedResources = [...result.resources].sort((a, b) => {
-      // Extract the filename part from the public_id (after the last slash)
-      const filenameA = a.public_id.split('/').pop().toLowerCase();
-      const filenameB = b.public_id.split('/').pop().toLowerCase();
+      // Extract just the first character of the filename
+      const firstCharA = a.public_id.split('/').pop().charAt(0).toLowerCase();
+      const firstCharB = b.public_id.split('/').pop().charAt(0).toLowerCase();
       
-      return filenameA.localeCompare(filenameB);
+      return firstCharA.localeCompare(firstCharB);
     });
       
     return sortedResources;
