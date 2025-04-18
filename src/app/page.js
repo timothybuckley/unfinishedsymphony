@@ -1,7 +1,7 @@
 import { getImages } from '../utils/cloudinary';
 import Gallery from '../components/Gallery';
 
-export const revalidate = 3600; // Revalidate at most every hour
+export const revalidate = 300; // Revalidate at most every hour
 
 export default async function Home() {
   const images = await getImages();
